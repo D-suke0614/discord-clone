@@ -15,6 +15,8 @@ import {
   addDoc,
   collection,
   onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -45,7 +47,12 @@ function Chat() {
       "messages"
     );
 
-    onSnapshot(collectionRef, (snapShot) => {
+    const collectionRefOrderBy = query(
+      collectionRef,
+      orderBy("timestamp", "desc")
+    );
+
+    onSnapshot(collectionRefOrderBy, (snapShot) => {
       const results: Messages[] = [];
       snapShot.docs.forEach((doc) => {
         results.push({
@@ -77,6 +84,7 @@ function Chat() {
       timestamp: serverTimestamp(),
       user: user,
     });
+    setInputText("");
   };
 
   return (
@@ -102,6 +110,7 @@ function Chat() {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInputText(e.target.value)
             }
+            value={inputText}
           />
           <button
             type="submit"
