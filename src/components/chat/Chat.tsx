@@ -81,13 +81,16 @@ function Chat() {
 
   return (
     <div className="chat">
-      {/* chatHeader */}
       <ChatHeader channelName={channelName} />
-      {/* chatMessage */}
       <div className="chatMessage">
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
+        {messages.map((message, idx) => (
+          <ChatMessage
+            key={idx}
+            message={message.message}
+            timestamp={message.timestamp}
+            user={message.user}
+          />
+        ))}
       </div>
       {/* chatInput */}
       <div className="chatInput">
