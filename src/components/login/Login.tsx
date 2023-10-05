@@ -1,4 +1,3 @@
-import React from "react";
 import "./Login.scss";
 import { Button } from "@mui/material";
 import { signInWithPopup } from "firebase/auth";
