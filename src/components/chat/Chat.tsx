@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Chat.scss";
 import ChatHeader from "./ChatHeader";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -10,13 +10,8 @@ import { useAppSelector } from "../../app/hooks";
 import {
   CollectionReference,
   DocumentData,
-  DocumentReference,
-  Timestamp,
   addDoc,
   collection,
-  onSnapshot,
-  orderBy,
-  query,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -63,7 +58,7 @@ function Chat() {
           />
         ))}
       </div>
-      {/* chatInput */}
+
       <div className="chatInput">
         <AddCircleOutlineIcon />
         <form action="">

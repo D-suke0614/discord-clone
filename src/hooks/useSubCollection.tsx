@@ -1,6 +1,4 @@
 import {
-  DocumentData,
-  Query,
   Timestamp,
   collection,
   onSnapshot,
@@ -49,7 +47,6 @@ function useSubCollection(collectionName: string, subCollectionName: string) {
         });
       });
       setSubDocuments(results);
-      console.log(results);
     });
   }, [channelId]);
 
